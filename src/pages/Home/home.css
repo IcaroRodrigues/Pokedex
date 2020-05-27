@@ -1,0 +1,140 @@
+header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin: 0px;
+    padding: 0px 2rem;
+
+    align-items: center;
+
+    height: 5rem;
+
+    background-color: blueviolet;
+
+}
+
+main {
+    display: flex;
+}
+.buttons {
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+.buttons button {
+
+    outline: none;
+
+    background-color: blueviolet;
+
+    color: rgb(211, 211, 211);
+
+    font-size: 2rem;
+
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+    height: 5rem;
+    width: 5rem;
+}
+
+.buttons button:hover {
+
+    cursor: pointer;
+
+    color: white;
+    
+
+}
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+
+    max-width: 97rem;
+
+    margin-top: 2rem;
+    margin-left: 3rem;
+
+    list-style-type: none;
+}
+
+ul li {
+
+    text-decoration-style: none;
+
+    flex:1 1 1;
+    margin: 20px;
+}
+
+.card {
+    padding: 0.3rem;
+    padding-bottom: 0rem;
+    background-color: blueviolet;
+
+    min-height: 12rem;
+    max-height: 20rem;
+
+    height: 14rem;
+    width: 10rem;
+
+    border-radius: 10px;
+}
+
+.card-button {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-button button {
+
+    background-color: blueviolet;
+    border: 0px;
+
+    outline: none;
+
+    cursor: pointer;
+}
+
+
+.card-image {
+
+    text-align: center;
+}
+
+.card-name {
+
+    text-align: center;
+
+    margin-top: -0.7rem;
+
+    font-size: 0.8rem;
+}
+
+.card-stats {
+
+    display: flex;
+
+    margin-top: 1rem;
+
+    justify-content: space-around;
+}
+
+footer {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    height: 3rem;
+
+    color: white;
+
+    background-color: blueviolet;
+}

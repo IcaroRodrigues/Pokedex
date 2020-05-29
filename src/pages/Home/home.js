@@ -1,40 +1,20 @@
 import React, { useState, useEffect } from 'react';
 
-import api from '../../services/api'
+import { connect } from 'react-redux'
 
-import Login from '../Login/login'
+import { Link } from 'react-router-dom'
+
+import api from '../../services/api'
 
 import './home.css';
 
+function Home({ user }) {
 
-function Home() {
 
-    console.log(Login.username)
+    const nome = JSON.parse(localStorage.getItem('username'))
 
     const [list, setList] = useState([]);
-    const [user, setUser] = useState('');
     const [page, setPage] = useState(1);
-
-    useEffect(() => {
-
-        api.get('/users/icaro')
-            .then(res => {
-
-                const response = res.data.user;
-
-                setUser(response.username)
-            })
-
-
-        api.get(`/users/${Login.username}`)
-            .then(res => {
-
-                const response = res.data
-
-                console.log(response)
-            })
-
-    }, []);
 
     useEffect(() => {
 
@@ -68,49 +48,58 @@ function Home() {
         }
     }
 
+
     function handleAddFavorites(pokemon) {
 
-        api.post(`users/icaro/starred/${pokemon}`);
+        api.post(`users/${nome.username}/starred/${pokemon}`);
     }
 
+    function handleSeePokemon(pokemon_name) {
+
+        const pokemon = {
+            pokemon_name
+        }
+
+        localStorage.setItem('pokemon_profile', JSON.stringify(pokemon));
+    }
 
     return (
         <>
             <header>
                 <img src="https://img.icons8.com/office/80/000000/pokedex.png" alt="pokedex" />
-                <h2>{user}</h2>
+                
+                <Link to="/users/profile">{nome.username}</Link>
+                <Link to="/">Sair</Link>
             </header>
             <main >
                 <ul>
                     {list.map(pokemon => (
-                        <li key={pokemon.id}>
-                            <div className="card">
+                        <li key={pokemon.id} onClick={() => handleSeePokemon(pokemon.name)}>
+                            <Link to="/pokemon" >
+                                <div className="card">
 
-                                <div className="card-image">
-                                    <img src={pokemon.image_url} alt={pokemon.name} />
-                                </div>
-
-                                <div className="card-name">
-                                    <h2>{pokemon.name}</h2>
-                                </div>
-
-                                <div className="card-stats">
-                                    <div>
-                                        <p>Height</p>
-                                        {pokemon.height}
+                                    <div className="card-image">
+                                        <img src={pokemon.image_url} alt={pokemon.name} />
+                                        <h2>{pokemon.name}</h2>
                                     </div>
-                                    <div>
-                                        <p>Weight</p>
-                                        {pokemon.weight}
+
+                                    <div className="card-stats">
+                                        <div>
+                                            <p>Height</p>
+                                            {pokemon.height}
+                                        </div>
+                                        <div>
+                                            <p>Weight</p>
+                                            {pokemon.weight}
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div className="card-button">
-                                    <button onClick={() => handleAddFavorites(pokemon.name)}>
-                                        <img src="https://img.icons8.com/material-outlined/24/000000/--broken-heart.png" alt="heart" />
-                                    </button>
                                 </div>
-
+                            </Link>
+                            <div className="card-button">
+                                <button onClick={() => handleAddFavorites(pokemon.name)}>
+                                    <img src="https://img.icons8.com/material-outlined/24/000000/--broken-heart.png" alt="heart" />
+                                </button>
                             </div>
                         </li>
                     ))}
@@ -118,7 +107,7 @@ function Home() {
 
                 <div className="buttons">
                     <button onClick={() => handleChangePage(0)}> Prev </button>
-                    <button onClick={() => handleChangePage(1)}> Prox </button>
+                    <button onClick={() => handleChangePage(1)}> Next </button>
                 </div>
             </main>
 
@@ -129,4 +118,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default connect(state => ({ user: state }))(Home);

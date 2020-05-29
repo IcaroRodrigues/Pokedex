@@ -3,8 +3,22 @@
     padding: 0px;
 }
 
+a{
+  
+    text-decoration: none;
+    color: black;
+}
 
-.form {
+a:hover {
+
+    cursor: pointer;
+}
+
+.login--button {
+    color: black;
+}
+
+.main--form {
 
     display: flex;
 
@@ -16,7 +30,37 @@
     background-color: black;
 }
 
-input {
+.login--form {
+
+    display: flex;
+    flex-direction: column;    
+}
+
+.login--form button {
+
+    margin-top: 2rem;
+    width: 33rem;
+    height: 5rem;
+
+    border-radius: 30px;
+
+    font-size: 2rem;   
+}
+
+.login--form button:hover {
+
+    transition: 0.5s;
+
+    cursor: pointer;
+
+    background-color: blueviolet;
+    color: white;
+
+    border: 0px
+
+}
+
+.login--input {
     
     height: 5rem;
     width: 30rem;

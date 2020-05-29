@@ -1,3 +1,7 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
 header {
 
     display: flex;
@@ -18,6 +22,11 @@ header {
 main {
     display: flex;
 }
+
+a {
+    margin-right: 2rem;
+}
+
 .buttons {
 
     display: flex;
@@ -33,19 +42,21 @@ main {
 
     color: rgb(211, 211, 211);
 
+    border: 0px;
+
     font-size: 2rem;
 
     margin-top: 10rem;
     margin-bottom: 10rem;
     height: 5rem;
     width: 5rem;
+
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,6);
 }
 
 .buttons button:hover {
 
     cursor: pointer;
-
-    color: white;
     
 
 }
@@ -71,17 +82,25 @@ ul li {
 }
 
 .card {
-    padding: 0.3rem;
+
+    display: flex;
+    
+    padding: 0.3rem 1rem;
     padding-bottom: 0rem;
+
     background-color: blueviolet;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 
-    min-height: 12rem;
-    max-height: 20rem;
-
-    height: 14rem;
-    width: 10rem;
+    height: 12rem;
+    width: 25rem;
 
     border-radius: 10px;
+}
+
+.card:hover {
+
+    transition: 0.3s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,6);
 }
 
 .card-button {
@@ -93,16 +112,46 @@ ul li {
 
 .card-button button {
 
+    position: relative;
+
+    bottom: 11.5rem;
+    left: 12rem;
+    
+
     background-color: blueviolet;
     border: 0px;
 
     outline: none;
 
+    text-decoration-line: none;
+
     cursor: pointer;
 }
 
+.card-button img {
+
+    background-color: blueviolet;
+    
+}
+
+header a{
+
+    font-size: 2rem;
+
+    color: rgb(189, 189, 189);
+}
+
+header a:hover {
+
+    color: white;
+}
 
 .card-image {
+    
+    width: 40%;
+    height: 100%;
+    
+    margin-top: 1.2rem;
 
     text-align: center;
 }
@@ -118,11 +167,19 @@ ul li {
 
 .card-stats {
 
+    width: 60%;
+    height: 100%;
+
     display: flex;
 
+    align-items: center;
+    justify-content: center;
     margin-top: 1rem;
 
     justify-content: space-around;
+
+    font-size: 1.3rem;
+    font-weight: 500;
 }
 
 footer {

@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import api from '../../services/api'
 
+import { Link } from 'react-router-dom'
+
+import { connect } from 'react-redux'
+
 import './login.css';
 
 function Login() {
@@ -11,34 +15,37 @@ function Login() {
 
         ev.preventDefault();
 
-        const data = {
-            username
+    }
+
+    function sendUser(username) {
+
+        const user = {
+            username,
+            page_number: 1
         }
 
-        try {
+        api.post('users', user)
 
-            await api.post('users', data)
-
-        } catch (error) {
-
-            console.log('Usuario ja existe')
-        }
+        localStorage.setItem('username', JSON.stringify(user))
     }
 
     return (
         <>
-            <div className="form">
-                <form onSubmit={handleAddUser}>
+            <div className="main--form">
+                <form className="login--form" onSubmit={handleAddUser}>
                     <input
+                        className="login--input"
                         placeholder="Username"
                         value={username}
                         onChange={e => setUsername(e.target.value)}
                     />
-                    <button type="submit">Entrar</button>
+                    <Link to="/home">
+                        <button type="submit" onClick={() => sendUser(username)}>Entrar</button>
+                    </Link>
                 </form>
             </div>
         </>
     );
 }
 
-export default Login;
+export default connect(state => ({ name: state }))(Login);

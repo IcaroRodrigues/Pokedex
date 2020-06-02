@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import { connect } from 'react-redux'
-
 import { Link } from 'react-router-dom'
 
 import Modal from 'react-modal'
@@ -10,7 +8,7 @@ import api from '../../services/api'
 
 import './home.css';
 
-function Home({ user }) {
+function Home() {
 
 
     const nome = JSON.parse(localStorage.getItem('username'))
@@ -179,4 +177,4 @@ function Home({ user }) {
     );
 }
 
-export default connect(state => ({ user: state }))(Home);
+export default Home;

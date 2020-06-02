@@ -3,8 +3,6 @@ import api from '../../services/api'
 
 import { Link } from 'react-router-dom'
 
-import { connect } from 'react-redux'
-
 import './login.css';
 
 function Login() {
@@ -49,4 +47,4 @@ function Login() {
     );
 }
 
-export default connect(state => ({ name: state }))(Login);
+export default Login;

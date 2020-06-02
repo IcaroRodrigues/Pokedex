@@ -20,10 +20,13 @@ a:hover {
 
 .form {
 
+    background-image: url('../../assets/images/background.jpg');
+    background-repeat: no-repeat;
+    background-position-y: -5rem;
+
     display: flex;
 
-    background-image: url('../../assets/images/background.jpg');
-    background-position-y: -10rem;
+    position: absolute;
 
     width: 100vw;
     height: 100vh;

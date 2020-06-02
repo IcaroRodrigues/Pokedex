@@ -4,11 +4,9 @@ import api from '../../services/api'
 
 import { Link } from 'react-router-dom'
 
-import { connect } from 'react-redux'
-
 import './profile.css'
 
-function Profile({ user }) {
+function Profile() {
 
     const [data, setData] = useState([])
 
@@ -41,7 +39,7 @@ function Profile({ user }) {
     }
 
     return (
-        <>
+        <body>
             <header className="profile--header">
                 <h1>Pokemons favoritos</h1>
                 <Link to="/home">Voltar</Link>
@@ -80,9 +78,8 @@ function Profile({ user }) {
             <footer className="profile--footer">
                 <p>Criado e desenvolvido por Icaro Rodrigues e Nuno </p>
             </footer>
-
-        </>
+        </body>
     )
 }
 
-export default connect(state => ({ user: state }))(Profile);
+export default Profile;

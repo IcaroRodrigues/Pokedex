@@ -1,3 +1,15 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+
+    height: 100vh;
+
+    background-color: rgb(32, 32, 32);
+}
+
 .card-profile {
 
     display: flex;
@@ -17,13 +29,6 @@
 .profile--header {
 
     height: 7vh;
-}
-
-
-
-.profile--footer {
-
-    height: 4vh;
 }
 
 .card-image {
@@ -99,4 +104,11 @@
     
     font-size: 1.2rem;
     margin-left: 2rem;
+}
+
+footer {
+
+    position: relative;
+
+    top: 5.6rem
 }

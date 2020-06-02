@@ -38,42 +38,48 @@ function Profile({ user }) {
 
                 setData(response)
             })
-
     }
 
     return (
         <>
-            <header>
+            <header className="profile--header">
                 <h1>Pokemons favoritos</h1>
-                <Link to="/home">X</Link>
+                <Link to="/home">Voltar</Link>
             </header>
 
-            <ul>
-                {data.map(pokemon => (
-                    <li key={pokemon.id}>
-                        <div className="card--profile">
+            <main className="profile--main">
 
-                            <div className="card-image">
-                                <img src={pokemon.image_url} alt={pokemon.name} />
-                                <h2>{pokemon.name}</h2>
+                <ul>
+                    {data.map(pokemon => (
+                        <li key={pokemon.id}>
+                            <div className="card-profile">
+
+                                <div className="card-image">
+                                    <img src={pokemon.image_url} alt={pokemon.name} />
+                                    <h2>{pokemon.name}</h2>
+                                </div>
+
+                                <div className="card-stats">
+                                    <div>
+                                        <p>Height</p>
+                                        <span>{pokemon.height}</span>
+                                    </div>
+                                    <div>
+                                        <p>Weight</p>
+                                        <span>{pokemon.weight}</span>
+                                    </div>
+                                </div>
+                                <button className="card-button" onClick={() => handleRemoveFavorite(pokemon.name)}>X</button>
                             </div>
 
-                            <div className="card-stats">
-                                <div>
-                                    <p>Height</p>
-                                    <span>{pokemon.height}</span>
-                                </div>
-                                <div>
-                                    <p>Weight</p>
-                                    <span>{pokemon.weight}</span>
-                                </div>
-                            </div>
-                            <button className="card--button" onClick={() => handleRemoveFavorite(pokemon.name)}>X</button>
-                        </div>
+                        </li>
+                    ))}
+                </ul>
+            </main>
 
-                    </li>
-                ))}
-            </ul>
+            <footer className="profile--footer">
+                <p>Criado e desenvolvido por Icaro Rodrigues e Nuno </p>
+            </footer>
 
         </>
     )

@@ -21,7 +21,6 @@ function Login() {
 
         const user = {
             username,
-            page_number: 1
         }
 
         api.post('users', user)
@@ -31,18 +30,20 @@ function Login() {
 
     return (
         <>
-            <div className="main--form">
-                <form className="login--form" onSubmit={handleAddUser}>
-                    <input
-                        className="login--input"
-                        placeholder="Username"
-                        value={username}
-                        onChange={e => setUsername(e.target.value)}
-                    />
-                    <Link to="/home">
-                        <button type="submit" onClick={() => sendUser(username)}>Entrar</button>
-                    </Link>
-                </form>
+            <div className="form">
+                <div className="main--form">
+                    <form className="login--form" onSubmit={handleAddUser}>
+                        <input
+                            className="login--input"
+                            placeholder="Username"
+                            value={username}
+                            onChange={e => setUsername(e.target.value)}
+                        />
+                        <Link to="/home">
+                            <button type="submit" onClick={() => sendUser(username)}>Entrar</button>
+                        </Link>
+                    </form>
+                </div>
             </div>
         </>
     );

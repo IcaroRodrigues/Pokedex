@@ -1,11 +1,11 @@
-.card--profile {
+.card-profile {
 
     display: flex;
     
     padding: 0.3rem 1rem;
     padding-bottom: 0rem;
 
-    background-color: blueviolet;
+    background-color: rgb(238, 51, 51);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 
     height: 12rem;
@@ -14,26 +14,54 @@
     border-radius: 10px;
 }
 
-.card--profile:hover {
+.profile--header {
 
-    transition: 0.3s;
-    box-shadow: 0 4px 10px 0 rgba(0,0,0,6);
-
-    cursor: pointer;
+    height: 7vh;
 }
 
-.card--button {
+
+
+.profile--footer {
+
+    height: 4vh;
+}
+
+.card-image {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    width: 40%;
+    height: 100%;
+    
+    margin-top: 1.2rem;
+
+    text-align: center;
+}
+
+.card-profile > button {
+    position: relative;
+
+    left: 0.2rem;
+}
+
+.card-button {
 
     position: relative;
 
     top: 0.4rem;
+    left: 2rem;
 
     height: 2rem;
     width: 2rem;
 
-    background-color: red;
+    background-color: rgb(238, 51, 51);;
 
     border: 0px;
+
+    font-weight: 600;
 
     border-radius: 5px;
 
@@ -42,11 +70,33 @@
     font-size: 1.2rem;
 }
 
-.card--button:hover {
+.card-button:hover {
 
     transition: 0.2s;
 
     cursor: pointer;
 
     color: white;
+}
+
+.card-stats {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-left: 2rem;
+
+    justify-content: space-around;
+
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.card-stats > div {
+
+    
+    font-size: 1.2rem;
+    margin-left: 2rem;
 }

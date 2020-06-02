@@ -18,6 +18,20 @@ a:hover {
     color: black;
 }
 
+.form {
+
+    display: flex;
+
+    background-image: url('../../assets/images/background.jpg');
+    background-position-y: -10rem;
+
+    width: 100vw;
+    height: 100vh;
+
+    justify-content: center;
+    align-items: center;
+}
+
 .main--form {
 
     display: flex;
@@ -25,9 +39,12 @@ a:hover {
     justify-content: center;
     align-items: center;
 
-    height: 100vh;
+    text-align: center;
 
-    background-color: black;
+    height: 50vh;
+    width: 40rem;
+
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .login--form {
@@ -45,16 +62,20 @@ a:hover {
     border-radius: 30px;
 
     font-size: 2rem;   
+
+    outline: none;
+
+    border: 0px;
 }
 
 .login--form button:hover {
 
-    transition: 0.5s;
+    transition: 0.3s;
 
     cursor: pointer;
 
-    background-color: blueviolet;
-    color: white;
+    background-color: black;
+    color: red;
 
     border: 0px
 

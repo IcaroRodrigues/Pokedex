@@ -15,12 +15,13 @@ header {
 
     height: 5rem;
 
-    background-color: blueviolet;
+    background-color: rgb(238, 51, 51);
 
 }
 
 main {
     display: flex;
+    background-color: rgb(32, 32, 32);
 }
 
 a {
@@ -38,9 +39,11 @@ a {
 
     outline: none;
 
-    background-color: blueviolet;
+    background-color: rgb(238, 51, 51);
 
-    color: rgb(211, 211, 211);
+    color: black;
+
+    font-weight: 500;
 
     border: 0px;
 
@@ -57,6 +60,8 @@ a {
 .buttons button:hover {
 
     cursor: pointer;
+
+    color: white;
     
 
 }
@@ -88,7 +93,7 @@ ul li {
     padding: 0.3rem 1rem;
     padding-bottom: 0rem;
 
-    background-color: blueviolet;
+    background-color: rgb(238, 51, 51);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 
     height: 12rem;
@@ -100,17 +105,17 @@ ul li {
 .card:hover {
 
     transition: 0.3s;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,6);
+    box-shadow: 0 8px 16px 0 rgb(255, 0, 0, 0.9);
 }
 
-.card-button {
+.card--button {
 
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.card-button button {
+.card--button button {
 
     position: relative;
 
@@ -118,7 +123,7 @@ ul li {
     left: 12rem;
     
 
-    background-color: blueviolet;
+    background-color: rgb(238, 51, 51);
     border: 0px;
 
     outline: none;
@@ -128,9 +133,9 @@ ul li {
     cursor: pointer;
 }
 
-.card-button img {
+.card--button img {
 
-    background-color: blueviolet;
+    background-color: rgb(238, 51, 51);
     
 }
 
@@ -138,7 +143,7 @@ header a{
 
     font-size: 2rem;
 
-    color: rgb(189, 189, 189);
+    color: black;
 }
 
 header a:hover {
@@ -146,8 +151,13 @@ header a:hover {
     color: white;
 }
 
-.card-image {
+.card--image {
     
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
     width: 40%;
     height: 100%;
     
@@ -156,7 +166,13 @@ header a:hover {
     text-align: center;
 }
 
-.card-name {
+.card--image img {
+
+    height: 7rem;
+    width: 8rem;
+}
+
+.card--name {
 
     text-align: center;
 
@@ -165,16 +181,15 @@ header a:hover {
     font-size: 0.8rem;
 }
 
-.card-stats {
+.card--stats {
 
-    width: 60%;
-    height: 100%;
 
     display: flex;
 
     align-items: center;
     justify-content: center;
     margin-top: 1rem;
+    margin-left: 2rem;
 
     justify-content: space-around;
 
@@ -191,7 +206,105 @@ footer {
 
     height: 3rem;
 
-    color: white;
+    font-weight: 600;
 
-    background-color: blueviolet;
+    color: black;
+
+    background-color: rgb(238, 51, 51);
+}
+
+.modal--button {
+
+    cursor: pointer;
+    
+    outline: none;
+    
+    margin: 0px;
+
+    border: 0px;
+
+    
+    border-radius: 10px;
+}
+
+.modal {
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.modal--content {
+
+    display: flex;
+
+    justify-content: space-around;
+    align-items: center;
+
+    background-color: rgb(238, 51, 51);
+    
+    width: 50rem;
+    height: 20rem;
+
+    max-width: 50rem;
+    min-width: 30rem;
+
+
+    border-radius: 20px;
+}
+
+.modal--content h1 {
+
+    margin-top: 0rem;
+    font-size: 2rem;
+}
+
+.modal--content img {
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    width: 10rem;
+    height: 10rem;
+}
+
+.modal--content > button {
+
+    position: relative;
+
+    bottom: 8rem;
+    left: 3rem;
+
+    font-size: 2rem;
+    font-weight: 600;
+
+    background-color: rgb(238, 51, 51);
+
+    border: 0px;
+
+    outline: none;
+
+    cursor: pointer;
+
+    color: black;
+    
+}
+
+.modal--cards--stats {
+
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.modal--cards--stats > p {
+    
+    font-size: 1.4rem;
 }

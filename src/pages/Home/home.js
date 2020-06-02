@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 
 import { Link } from 'react-router-dom'
 
+import Modal from 'react-modal'
+
 import api from '../../services/api'
 
 import './home.css';
@@ -15,6 +17,17 @@ function Home({ user }) {
 
     const [list, setList] = useState([]);
     const [page, setPage] = useState(1);
+    const [pokemonModal, setPokemonModal] = useState(
+        {
+            modaIsOpen: false,
+            pokemon_img: '',
+            pokemon_id: '',
+            pokemon_name: '',
+            pokemon_height: '',
+            pokemon_weight: '',
+            pokemon_type1: '',
+            pokemon_type2: ''
+        })
 
     useEffect(() => {
 
@@ -26,6 +39,12 @@ function Home({ user }) {
             })
 
     }, [page])
+
+    useEffect(() => {
+
+        Modal.setAppElement('main')
+
+    }, [])
 
     function handleChangePage(value) {
 
@@ -54,56 +73,98 @@ function Home({ user }) {
         api.post(`users/${nome.username}/starred/${pokemon}`);
     }
 
-    function handleSeePokemon(pokemon_name) {
+    async function showPokemon(pokemon) {
 
-        const pokemon = {
-            pokemon_name
-        }
+        const pokemon_types = pokemon.kind.split(';', 2)
 
-        localStorage.setItem('pokemon_profile', JSON.stringify(pokemon));
+        await api.get(`pokemons/${pokemon.name}`)
+            .then(res => {
+
+                setPokemonModal({
+                    modaIsOpen: true,
+                    pokemon_img: pokemon.image_url,
+                    pokemon_id: pokemon.id,
+                    pokemon_name: pokemon.name,
+                    pokemon_height: pokemon.height,
+                    pokemon_weight: pokemon.weight,
+                    pokemon_type1: pokemon_types[0],
+                    pokemon_type2: pokemon_types[1]
+                })
+            })
     }
+
 
     return (
         <>
             <header>
-                <img src="https://img.icons8.com/office/80/000000/pokedex.png" alt="pokedex" />
-                
+                <h1>Pokédex</h1>
+
                 <Link to="/users/profile">{nome.username}</Link>
                 <Link to="/">Sair</Link>
             </header>
             <main >
                 <ul>
                     {list.map(pokemon => (
-                        <li key={pokemon.id} onClick={() => handleSeePokemon(pokemon.name)}>
-                            <Link to="/pokemon" >
+
+                        <li key={pokemon.id}>
+                            <button className="modal--button" onClick={() => showPokemon(pokemon)}>
+
                                 <div className="card">
 
-                                    <div className="card-image">
+                                    <div className="card--image">
                                         <img src={pokemon.image_url} alt={pokemon.name} />
+                                    </div>
+
+                                    <div className="card--stats">
                                         <h2>{pokemon.name}</h2>
                                     </div>
 
-                                    <div className="card-stats">
-                                        <div>
-                                            <p>Height</p>
-                                            {pokemon.height}
-                                        </div>
-                                        <div>
-                                            <p>Weight</p>
-                                            {pokemon.weight}
-                                        </div>
-                                    </div>
-
                                 </div>
-                            </Link>
-                            <div className="card-button">
+
+                            </button>
+
+                            <div className="card--button">
                                 <button onClick={() => handleAddFavorites(pokemon.name)}>
                                     <img src="https://img.icons8.com/material-outlined/24/000000/--broken-heart.png" alt="heart" />
                                 </button>
                             </div>
+
                         </li>
                     ))}
                 </ul>
+
+                <Modal className="modal" isOpen={pokemonModal.modaIsOpen}>
+
+                    <div className="modal--content">
+
+                        <div>
+                            <img src={pokemonModal.pokemon_img} alt={pokemonModal.pokemon_name} />
+                            <h1>{pokemonModal.pokemon_name}</h1>
+                        </div>
+
+                        <div className="modal--cards">
+
+                            <div className="modal--cards--stats">
+                                <h2>Height</h2>
+                                <p>{pokemonModal.pokemon_height}</p>
+                            </div>
+
+                            <div className="modal--cards--stats">
+                                <h2>Weight</h2>
+                                <p>{pokemonModal.pokemon_weight}</p>
+                            </div>
+
+                            <div className="modal--cards--stats">
+                                <h2>Kind</h2>
+                                <p>{pokemonModal.pokemon_type1}</p>
+                                <p>{pokemonModal.pokemon_type2}</p>
+                            </div>
+                        </div>
+
+                        <button onClick={() => setPokemonModal({ modaIsOpen: false })}>X</button>
+                    </div>
+
+                </Modal >
 
                 <div className="buttons">
                     <button onClick={() => handleChangePage(0)}> Prev </button>
